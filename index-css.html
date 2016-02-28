@@ -56,31 +56,32 @@
       if(status == 0){open();return status = 1;}else{close();return status = 0}
    });
    //open函数
-   // function open(){
-   //    for (var i = 0; i < count; i++) {
-   //    cos = Math.cos(deg*i*0.017453293)*260;
-   //    sin = Math.sin(deg*i*0.017453293)*260; 
-   //    $('ul li').eq(i).delay(100*i);
-   //    $('ul li').eq(i).animate({bottom:cos,right:sin},1000) //决定顺逆时针
-   //          }}
-      function open(){
-      for (var i = 0; i < count; i++) { 
+   function open(){
+      for (var i = 0; i < count; i++) {
+      cos = Math.cos(deg*i*0.017453293)*260;
+      sin = Math.sin(deg*i*0.017453293)*260; 
       $('ul li').eq(i).delay(100*i);
-      var cos = 0;
-      var timer = setInterval(function(){
-      sin = Math.sqrt(260*260-cos*cos);
-      $('ul li').eq(0).animate({bottom:cos,right:sin},15) //决定顺逆时针
-      if(cos<260){cos += 5}else{clearInterval(timer)}
-      return cos},15)  
-
- }}
+      $('ul li').eq(i).animate({bottom:cos,right:sin},800) //决定顺逆时针
+            }}
+ //      function open(){
+      
+ //      // $('ul li').eq(i).delay(100*i);
+ //      var cos1 = 0;
+ //      var timer1 = setInterval(function(){
+ //         sin1 = Math.sqrt(260*260-cos1*cos1);
+ //         $('ul li').eq(1).animate({bottom:cos1,right:sin1},0.5) //决定顺逆时针
+ //         if(cos1<Math.cos(deg*1*0.017453293)*260){cos1 += 5}
+ //         else{clearInterval(timer1)}
+ //      }
+ //      ,0.5)  
+ // }
 
 
    function close(){
       for (var i = 0; i < count; i++) {
       sin = Math.sin(deg*i*0.017453293); 
       cos = Math.cos(deg*i*0.017453293);
-      $('ul li').eq(i).animate({bottom:0,right:260},1000)
+      $('ul li').eq(i).animate({bottom:0,right:260},800);
          }
    }
 

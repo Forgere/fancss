@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>fancss</title>
+   <style type="text/css">
+      div ul{margin: 0;padding: 0;}
+      body{line-height: 20px;height: 100%;}
+      .container{
+         height: 800px;
+      }
+      .show{
+         width: 360px;
+         margin-left: 20%;
+         overflow: hidden;
+         position: relative;
+         height: 640px;
+         border: 1px solid black;
+      }
+      li{display: block;
+         width: 50px;   
+         height: 50px;
+         border: 1px solid #403636;
+         border-radius: 50px;
+         position: absolute;
+         bottom: 0;
+         right: 260px;
+         z-index: 2;
+         background: red;
+}
+      li:first-child{
+         z-index: 999;
+         background: green;
+      }
+   </style>
+</head>
+<body>
+   <div class="container">
+      <div class="show">
+         <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+         </ul>
+      </div>
+   </div>
+   <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+   <script>
+   var count = $('ul li').length;          //对象数目
+   var deg = 90/(count-1);   //角度
+   var status = 0             //描述状态   
+   $('ul li').eq(0).click(function(){
+      if(status == 0){open();return status = 1;}else{close();return status = 0}
+   });
+   //open函数
+   function open(){
+      for (var i = 0; i < count; i++) {
+      cos = Math.cos(deg*i*0.017453293)*260;
+      sin = Math.sin(deg*i*0.017453293)*260; 
+      $('ul li').eq(i).delay(100*i);
+      $('ul li').eq(i).animate({bottom:cos,right:sin},800) //决定顺逆时针
+            }}
+ //      function open(){
+      
+ //      // $('ul li').eq(i).delay(100*i);
+ //      var cos1 = 0;
+ //      var timer1 = setInterval(function(){
+ //         sin1 = Math.sqrt(260*260-cos1*cos1);
+ //         $('ul li').eq(1).animate({bottom:cos1,right:sin1},0.5) //决定顺逆时针
+ //         if(cos1<Math.cos(deg*1*0.017453293)*260){cos1 += 5}
+ //         else{clearInterval(timer1)}
+ //      }
+ //      ,0.5)  
+ // }
+
+
+   function close(){
+      for (var i = 0; i < count; i++) {
+      sin = Math.sin(deg*i*0.017453293); 
+      cos = Math.cos(deg*i*0.017453293);
+      $('ul li').eq(i).animate({bottom:0,right:260},800);
+         }
+   }
+
+   </script>
+
+</body>
+</html>
